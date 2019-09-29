@@ -25,16 +25,16 @@ function getContent(fileName,callback){
 }
 function getFirstSection(chapter){
   //console.dir(chapter);
-  var arry=chapter.split("。");
-  arry=arry[0].split("；");
-  arry=arry[0].split("？");
+  var arry=chapter.split(/。|？|；|！/);
+  //arry=arry[0].split("；");
+  //arry=arry[0].split("？");
   //console.dir(arry);
   console.dir(arry[0]);
   return arry[0];
 }
 function getNewLine(chapter){
   //console.dir(chapter);
-  var nline=chapter.replace(/。/g,"。\r\n"); // 全局替换，句号后加换行
+  var nline=chapter.replace(/。|？|；|！/g,"$&\r\n"); // 全局替换，句号后加换行
   //console.dir(nline);
   return nline;
 }
@@ -86,8 +86,17 @@ function updateSummry(chapters){
 
 }
 
+function getSecment(textStr){
+  //console.dir(chapter);
+  var textArray=textStr.split(/。|？|；|！/); //
+  console.dir(textArray);
+  return textArray;
+}
 
-//getContent('./daode-org.md');
 //getFirstSection('75.民之饥以其上食税之多，是以饥。民之难治以其上之有为，是以难治。民之轻死以其求生之厚，是以轻死。夫唯无以生为者，是贤於贵生。');
 //getNewLine('75.民之饥以其上食税之多，是以饥。民之难治以其上之有为，是以难治。民之轻死以其求生之厚，是以轻死。夫唯无以生为者，是贤於贵生。');
+
+//getSecment('75.民之饥以其上食税之多，是以饥。民之难治以其上之有为，是以难治。民之轻死以其求生之厚，是以轻死。夫唯无以生为者，是贤於贵生。天地之间，其犹橐迭乎？虚而不屈，动而愈出。豫兮若冬涉川；犹兮若畏四邻；俨兮其若容；涣兮若冰之将释；敦兮其若朴；旷兮其若谷；混兮其若浊；澹兮其若海；飉(liáo,风的声音)兮若无止。荒兮其未央哉！众人熙熙如享太牢、如春登台。');
+
+//生成文件
 convertFile('./daode-org.md');
