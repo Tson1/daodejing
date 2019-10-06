@@ -1,7 +1,9 @@
 var fs = require('fs');
 var ejs = require('ejs');
+var pinyin = require("chinese-to-pinyin");
+var _=require("underscore");
 function loadTmp(fileName,callback){
-  console.log(fileName);
+  //console.log(fileName);
   fs.readFile(fileName, 'utf8', function (err, text) {
     if(err) {
       callback(err);
@@ -13,6 +15,7 @@ function loadTmp(fileName,callback){
 
 function getContent(fileName,callback){
   loadTmp(fileName,function (text) {
+    console.log(text);
     var arry=text.split(/<p>|<\/p>|¤/);  // <p> , </p> 分割
     var narry=Array.from(new Set(arry)); // 去重
     //console.dir(narry);
@@ -63,9 +66,17 @@ function converContex(fileName,nline){
 
   contents=content.split('\r\n');
   console.log(content);
+  contents=_.map(contents,function(item){
+    return{
+      src:item,
+      des:pinyin(item)
+    };
+  });
+  //console.log(contents);
   var param={'title':title,'contents':contents};
   //console.log(fileName);
   fs.readFile('temp.ejs', 'utf8', function (err, text) {
+    console.log(param);
     var result=ejs.render(text,param);
     fs.writeFileSync(fileName, result); //save file
     //callback(result);
@@ -100,3 +111,9 @@ function getSecment(textStr){
 
 //生成文件
 convertFile('./daode-org.md');
+//console.log('&#x6301;&#x800C;&#x76C8;&#x4E4B;&#x4E0D;&#x5982;&#x5176;&#x5DF1;&#xFF1B;');
+//console.log('\u6301 \u800C');
+//var tmp ='&#x6301;&#x800C;&#x76C8;&#x4E4B;&#x4E0D;&#x5982;&#x5176;&#x5DF1;&#xFF1B;'.replace(/&#x/g,'\\u').replace(/;/g,' ');
+//console.log(tmp);
+
+//console.log(pinyin('75.民之饥以其上食税之多，是以饥。民之难治以其上之有为，是以难治。民之轻死以其求生之厚，是以轻死。夫唯无以生为者，是贤於贵生。'));
