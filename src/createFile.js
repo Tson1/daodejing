@@ -69,7 +69,7 @@ function converContex(fileName,nline){
   contents=_.map(contents,function(item){
     return{
       src:item,
-      des:pinyin(item)
+      des:pinyin(item, { keepRest: true })
     };
   });
   //console.log(contents);
