@@ -51,7 +51,7 @@ function saveToFile(textArray){
     console.log(fileName);
     var nline=getNewLine(line);
     chapters.push(fileName);
-    fileName='../daodejing/'+fileName+'.md';
+    fileName='../chapters/'+fileName.substr(0,2)+'.md';
     //fileName=fileName+'.md';
     converContex(fileName,nline);
 
@@ -88,7 +88,13 @@ function convertFile(fileName){
   });
 }
 function updateSummry(chapters){
-  var param={'chapters':chapters};
+  var nchapters=_.map(chapters,function(item){
+    return{
+      src:item,
+      chapter:item.substr(0,2)
+    };
+  });
+  var param={'chapters':nchapters};
   fs.readFile('SUMMARY.ejs', 'utf8', function (err, text) {
     var result=ejs.render(text,param);
     fs.writeFileSync('../SUMMARY.md', result); //save file
