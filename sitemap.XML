@@ -1,0 +1,15 @@
+<urlset xmlns="http://www.google.com/schemas/sitemap/0.9">
+  <url>
+    <loc>https://daodejing.xfutian.com/</loc>
+    <lastmod>2019-10-28T04:20-08:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://daodejing.xfutian.com/chapters/*.html</loc>
+    <lastmod>2019-10-28T04:20-08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!--https://blog.csdn.net/wide288/article/details/12942821 -->
+</urlset>
