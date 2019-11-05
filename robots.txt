@@ -2,7 +2,7 @@ User-agent: *
 #Allow: /
 Disallow: /nogooglebot/
 Disallow: /*.md$
-Sitemap: https://daodejing.xfutian.com/sitemap.XML
+Sitemap: https://daodejing.xfutian.com/sitemap.xml
 
 
 #https://developers.google.com/search/reference/robots_txt
