@@ -85,7 +85,12 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         fontState.size--;
         saveFontSettings();
     }
-
+	// 
+	function pinying(){
+		$("rt").toggle();
+		var rtVisible=$("rt").is(':visible');
+		gitbook.storage.set('pinYinShow', rtVisible);
+	}
     // Change font family
     function changeFontFamily(configName, e) {
         if (e && e instanceof Event) {
@@ -167,6 +172,12 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             family: configFamily,
             theme:  configTheme
         });
+        var rtVisible=gitbook.storage.get('pinYinShow', true);
+        if(rtVisible){
+        	$("rt").show();
+        }else{
+        	$("rt").hide();
+        }
 
         update();
     }
@@ -193,6 +204,11 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
                         text: 'A',
                         className: 'font-enlarge',
                         onClick: enlargeFontSize
+                    },
+                    {
+                        text: 'PY',
+                        className: 'font-enlarge',
+                        onClick: pinying
                     }
                 ],
                 $.map(FAMILIES, function(family) {
