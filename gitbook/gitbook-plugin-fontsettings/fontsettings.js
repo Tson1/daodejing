@@ -159,6 +159,11 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             $book[0].className = $book[0].className.replace(/\bcolor-theme-\S+/g, '');
             $book.addClass('color-theme-'+fontState.theme);
         }
+        if(fontState.rtVisible){
+        	$("rt").show();
+        }else{
+        	$("rt").hide();
+        }
     }
 
     function init(config) {
@@ -170,9 +175,10 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         fontState = gitbook.storage.get('fontState', {
             size:   config.size || 2,
             family: configFamily,
-            theme:  configTheme
+            theme:  configTheme,
+            pinYinShow:true
         });
-        var rtVisible=gitbook.storage.get('pinYinShow', true);
+        //var rtVisible=gitbook.storage.get('pinYinShow', true);
         if(rtVisible){
         	$("rt").show();
         }else{
