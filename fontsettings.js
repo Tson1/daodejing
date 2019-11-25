@@ -179,7 +179,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             pinYinShow:true
         });
         //var rtVisible=gitbook.storage.get('pinYinShow', true);
-        if(rtVisible){
+        if(fontState.pinYinShow){
         	$("rt").show();
         }else{
         	$("rt").hide();
