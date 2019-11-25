@@ -88,8 +88,8 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
 	// 
 	function pinying(){
 		$("rt").toggle();
-		var rtVisible=$("rt").is(':visible');
-		fontState.pinYinShow=rtVisible;
+		console.log($("rt").is(':visible'));
+		fontState.pinYinShow=$("rt").is(':visible');
 	}
     // Change font family
     function changeFontFamily(configName, e) {
@@ -159,7 +159,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             $book[0].className = $book[0].className.replace(/\bcolor-theme-\S+/g, '');
             $book.addClass('color-theme-'+fontState.theme);
         }
-        if(fontState.rtVisible){
+        if(fontState.pinYinShow){
         	$("rt").show();
         }else{
         	$("rt").hide();
@@ -178,7 +178,6 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             theme:  configTheme,
             pinYinShow:true
         });
-        //var rtVisible=gitbook.storage.get('pinYinShow', true);
         if(fontState.pinYinShow){
         	$("rt").show();
         }else{
