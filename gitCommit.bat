@@ -4,4 +4,4 @@ REM D:
 REM cd D:/git/test
 git add .
 git commit -m %date:~0,4%/%date:~5,2%/%date:~8,2%
-git push
+git push --set-upstream origin gh-pages
