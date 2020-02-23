@@ -89,13 +89,13 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
 	function pinying(){
 		// $("rt").toggle();
 		// var isHiden=$("rt").hasClass('rthiden');
-    var $book = gitbook.state.$book;
-    var isHiden=$book.hasClass('rthiden');
-    // if(isHiden){
-    //   $("rt").removeClass('hiden');
-    // }else{
-  	// 	$("rt").addClass('hiden'); // removeClass，hasClass update
-    // }
+	    var $book = gitbook.state.$book;
+	    var isHiden=$book.hasClass('rthiden');
+	    // if(isHiden){
+	    //   $("rt").removeClass('hiden');
+	    // }else{
+	  	// 	$("rt").addClass('hiden'); // removeClass，hasClass update
+	    // }
 		// console.log($("rt").is(':visible'));
 		// fontState.pinYinShow=$("rt").is(':visible');
 		fontState.pinYinShow=!isHiden;
