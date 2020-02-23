@@ -98,7 +98,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
 	    // }
 		// console.log($("rt").is(':visible'));
 		// fontState.pinYinShow=$("rt").is(':visible');
-		fontState.pinYinShow=!isHiden;
+		fontState.pinYinShow=isHiden;
 		saveFontSettings();
 	}
     // Change font family
